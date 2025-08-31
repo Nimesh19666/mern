@@ -1,1 +1,9 @@
-console.log("Hello world")
+const express = require('express')
+const dotenc = require('dotenv').config()
+const port = process.env.PORT || 8000
+
+const app = express()
+
+app.use('/api/goals', require('./routes/goalRoutes'))
+
+app.listen(port,() => console.log(`Server Started in port ${port}`))
