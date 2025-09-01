@@ -1,0 +1,37 @@
+const asyncHandler = reqquire('express-async-handler')
+
+const getGoals = asyncHandler( async(req,res)=>{
+    res.status(200).json({
+        message:'Get Goals'
+    })
+})
+
+const postGoals = asyncHandler( async (req,res)=>{
+    if(!req.body.text){
+        res.status(400)
+        throw new Error('please add a text feild')
+    }
+    res.status(200).json({
+        message:`Create Goals`
+    })
+})
+
+const updateGoals = asyncHandler( async(req,res)=>{
+    res.status(200).json({
+        message:`Updated Goal ${req.params.id}`
+
+    })
+})
+
+const deleteGoals = asyncHandler( async(req,res)=>{
+    res.status(200).json({
+        message:`delete Goal ${req.params.id}`
+
+    })
+})
+module.exports = {
+    getGoals,
+    postGoals,
+    updateGoals,
+    deleteGoals,
+}
